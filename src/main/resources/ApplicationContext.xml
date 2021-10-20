@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="computer" class="entity.Computer" autowire="byType">
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaOrdenador()}"></property>
 		<property name="precio" value="#{ram1.precio + ram2.precio + procesador.precio +
 										grafica1.precio + grafica2.precio + monitor.precio +
 										teclado.precio + raton.precio + placaBase.precio}"></property>
@@ -46,21 +46,21 @@
 	
 	<!-- Procesador -->
 	<bean id="procesador" class="entity.Procesador">
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaProcesador()}"></property>
 		<property name="precio" value="#{util.generateRandomNumber(200,500)}"></property>
 		<property name="hz" value="75"></property>
 	</bean>
 	
 	<!-- Tarjetas Graficas -->
 	<bean id="grafica1" class="entity.TarjetaGrafica">
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaGrafica()}"></property>
 		<property name="ram" ref="ram4"></property>
 		<property name="modelo" value="GTX7000"></property>
 		<property name="precio" value="#{util.generateRandomNumber(700,1000)}"></property>
 	</bean>
 	
 	<bean id="grafica2" class="entity.TarjetaGrafica">
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaGrafica()}"></property>
 		<property name="ram" ref="ram3"></property>
 		<property name="modelo" value="GTX1060"></property>
 		<property name="precio" value="#{util.generateRandomNumber(600,900)}"></property>
@@ -78,14 +78,14 @@
 	<!-- Perifericos -->
 	<bean id="monitor" class="entity.Monitor">
 		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property>
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaPerifericos()}"></property>
 		<property name="hz" value="166"></property>
 		<property name="tamaño" value="23"></property>
 	</bean>
 	
 	<bean id="raton" class="entity.Raton">
 		<property name="precio" value="#{util.generateRandomNumber(50,200)}"></property>
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaPerifericos()}"></property>
 		<property name="peso" value="23"></property>
 		<property name="botones" value="7"></property>
 		<property name="inalambrico" value="false"></property>
@@ -93,7 +93,7 @@
 	
 	<bean id="teclado" class="entity.Teclado">
 		<property name="precio" value="#{util.generateRandomNumber(50,200)}"></property>
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaPerifericos()}"></property>
 		<property name="tipo" value="Mecánico"></property>
 	</bean>
 	
@@ -108,7 +108,7 @@
 	</bean>
 	
 	<bean id="placaBase" class="entity.PlacaBase">
-		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="marca" value="#{util.getRandomMarcaPlacaBase()}"></property>
 		<property name="model" value="231"></property>
 		<property name="precio" value="#{util.generateRandomNumber(200,400)}"></property>
 	</bean>

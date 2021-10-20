@@ -21,8 +21,8 @@ public class Main {
 		
 		System.out.println(computer);
 		
-		OrdenadorService cocheService = context.getBean("ordenadorService", OrdenadorServiceImpl.class);
+		OrdenadorService ordenadorService = context.getBean("ordenadorService", OrdenadorServiceImpl.class);
 		
-		System.out.println(cocheService.guardarOrdenador(computer));
+		System.out.println(ordenadorService.guardarOrdenador(computer));
 	}
 }

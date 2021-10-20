@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="computer" class="entity.Computer" autowire="byType">
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="precio" value="#{ram1.precio + ram2.precio + procesador.precio +
+										grafica1.precio + grafica2.precio + monitor.precio +
+										teclado.precio + raton.precio + placaBase.precio}"></property>
+	</bean>
+	
+	<!-- RAMS -->
+	<bean id="ram1" class="entity.Ram">
+		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
+		<property name="hz" value="44"></property>
+		<property name="generacion" value="10"></property>
+	</bean>
+	
+	<bean id="ram2" class="entity.Ram">
+		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
+		<property name="hz" value="60"></property>
+		<property name="generacion" value="12"></property>
+	</bean>
+	
+	<bean id="ram3" class="entity.Ram">
+		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
+		<property name="hz" value="70"></property>
+		<property name="generacion" value="16"></property>
+	</bean>
+	
+	<bean id="ram4" class="entity.Ram">
+		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
+		<property name="hz" value="70"></property>
+		<property name="generacion" value="16"></property>
+	</bean>
+	
+	<bean id="listRam" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="entity.Ram">
+				<ref bean="ram1"/>
+				<ref bean="ram2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Procesador -->
+	<bean id="procesador" class="entity.Procesador">
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="precio" value="#{util.generateRandomNumber(200,500)}"></property>
+		<property name="hz" value="75"></property>
+	</bean>
+	
+	<!-- Tarjetas Graficas -->
+	<bean id="grafica1" class="entity.TarjetaGrafica">
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="ram" ref="ram4"></property>
+		<property name="modelo" value="GTX7000"></property>
+		<property name="precio" value="#{util.generateRandomNumber(700,1000)}"></property>
+	</bean>
+	
+	<bean id="grafica2" class="entity.TarjetaGrafica">
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="ram" ref="ram3"></property>
+		<property name="modelo" value="GTX1060"></property>
+		<property name="precio" value="#{util.generateRandomNumber(600,900)}"></property>
+	</bean>
+	
+	<bean id="listGraficas" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="entity.TarjetaGrafica">
+				<ref bean="grafica1"/>
+				<ref bean="grafica2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Perifericos -->
+	<bean id="monitor" class="entity.Monitor">
+		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property>
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="hz" value="166"></property>
+		<property name="tamaño" value="23"></property>
+	</bean>
+	
+	<bean id="raton" class="entity.Raton">
+		<property name="precio" value="#{util.generateRandomNumber(50,200)}"></property>
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="peso" value="23"></property>
+		<property name="botones" value="7"></property>
+		<property name="inalambrico" value="false"></property>
+	</bean>
+	
+	<bean id="teclado" class="entity.Teclado">
+		<property name="precio" value="#{util.generateRandomNumber(50,200)}"></property>
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="tipo" value="Mecánico"></property>
+	</bean>
+	
+	<bean id="listPerifericos" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="entity.Perifericos">
+				<ref bean="monitor"/>
+				<ref bean="raton"/>
+				<ref bean="teclado"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="placaBase" class="entity.PlacaBase">
+		<property name="marca" value="#{util.getRandomMarca()}"></property>
+		<property name="model" value="231"></property>
+		<property name="precio" value="#{util.generateRandomNumber(200,400)}"></property>
+	</bean>
+	
+	<!-- Utils -->
+	<bean id="util" class="utils.Util"></bean>
+	
+	<!-- OrdenadorService and OrdenadorRepository -->
+	<bean id="ordenadorService" class="service.impl.OrdenadorServiceImpl" autowire="byType"></bean>
+	<bean id="ordenadorRepo" class="repository.impl.OrdenadorRepositoryImpl"></bean>
+	
+</beans>

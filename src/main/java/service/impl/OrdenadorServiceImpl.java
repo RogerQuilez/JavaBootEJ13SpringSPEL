@@ -11,7 +11,7 @@ public class OrdenadorServiceImpl implements OrdenadorService {
 	@Override
 	public String guardarOrdenador(Computer ordenador) {
 		if (ordenadorRepo.guardarOrdenador(ordenador))
-			return "Objeto guardado Correctamente en el fichero Ordenador.txt\n"
+			return "Objeto guardado Correctamente en el fichero 'Ordenador.txt'\n"
 					+ "Refresque el proyecto para visualizarlo";
 		else
 			return "Error al guardar el objeto";

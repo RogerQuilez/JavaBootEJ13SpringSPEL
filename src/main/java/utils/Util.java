@@ -2,6 +2,7 @@ package utils;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.List;
 
 public class Util {
 
@@ -14,9 +15,9 @@ public class Util {
 		return formatter.format(number);
 	}
 	
-	public static String getRandomMarca(String[] marcas) {
-		int index = (int)Util.generateRandomNumber(0, marcas.length - 1);
-		return marcas[index];
+	public static String getRandomMarca(List<String> marcas) {
+		int index = (int)Util.generateRandomNumber(0, marcas.size() - 1);
+		return marcas.get(index);
 	}
 
 }

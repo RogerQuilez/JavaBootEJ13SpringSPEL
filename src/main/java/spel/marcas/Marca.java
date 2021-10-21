@@ -1,39 +1,42 @@
 package spel.marcas;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Marca {
 	
-	private static final String[] MARCA_ORDENADORES =
-			new String[] {"HP", "Asus", "Dell", "Acer"};
+	private static final List<String> MARCA_ORDENADORES =
+			Arrays.asList("HP", "Asus", "Dell", "Acer");
 	
-	private static final String[] MARCA_PROCESADORES =
-			new String[] {"AMD", "Intel", "CML", "NXP"};
+	private static final List<String> MARCA_PROCESADORES =
+			Arrays.asList("AMD", "Intel", "CML", "NXP");
 	
-	private static final String[] MARCA_GRAFICAS =
-			new String[] {"AMD", "Nvidia"};
+	private static final List<String> MARCA_GRAFICAS =
+			Arrays.asList("AMD", "Nvidia");
 	
-	private static final String[] MARCA_PERIFERICOS =
-			new String[] {"Asus", "Acer", "BenQ", "Dell"};
+	private static final List<String> MARCA_PERIFERICOS =
+			Arrays.asList("Asus", "Acer", "BenQ", "Dell");
 	
-	private static final String[] MARCA_PLACAS_BASE =
-			new String[] {"AsRock", "ASUS", "Biostar", "Intell"};
+	private static final List<String> MARCA_PLACAS_BASE =
+			Arrays.asList("AsRock", "ASUS", "Biostar", "Intell");
 
-	public static String[] getMarcaOrdenadores() {
+	public static List<String> getMarcaOrdenadores() {
 		return MARCA_ORDENADORES;
 	}
 
-	public static String[] getMarcaProcesadores() {
+	public static List<String> getMarcaProcesadores() {
 		return MARCA_PROCESADORES;
 	}
 
-	public static String[] getMarcaGraficas() {
+	public static List<String> getMarcaGraficas() {
 		return MARCA_GRAFICAS;
 	}
 
-	public static String[] getMarcaPerifericos() {
+	public static List<String> getMarcaPerifericos() {
 		return MARCA_PERIFERICOS;
 	}
 
-	public static String[] getMarcaPlacasBase() {
+	public static List<String> getMarcaPlacasBase() {
 		return MARCA_PLACAS_BASE;
 	}	
 

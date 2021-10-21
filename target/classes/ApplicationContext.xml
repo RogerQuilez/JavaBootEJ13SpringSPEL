@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="computer" class="entity.Computer" autowire="byType">
+	<context:component-scan base-package="spel"></context:component-scan>
+
+	<bean id="computer" class="spel.entity.Computer" autowire="byType">
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaOrdenadores())}"></property>
 		<property name="precio" value="#{ram1.precio + ram2.precio + procesador.precio +
 										grafica1.precio + grafica2.precio + monitor.precio +
@@ -12,25 +19,25 @@
 
 	
 	<!-- RAMS -->
-	<bean id="ram1" class="entity.Ram">
+	<bean id="ram1" class="spel.entity.Ram">
 		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
 		<property name="hz" value="44"></property>
 		<property name="generacion" value="10"></property>
 	</bean>
 	
-	<bean id="ram2" class="entity.Ram">
+	<bean id="ram2" class="spel.entity.Ram">
 		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
 		<property name="hz" value="60"></property>
 		<property name="generacion" value="12"></property>
 	</bean>
 	
-	<bean id="ram3" class="entity.Ram">
+	<bean id="ram3" class="spel.entity.Ram">
 		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
 		<property name="hz" value="70"></property>
 		<property name="generacion" value="16"></property>
 	</bean>
 	
-	<bean id="ram4" class="entity.Ram">
+	<bean id="ram4" class="spel.entity.Ram">
 		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property> 
 		<property name="hz" value="70"></property>
 		<property name="generacion" value="16"></property>
@@ -38,7 +45,7 @@
 	
 	<bean id="listRam" class="java.util.ArrayList">
 		<constructor-arg>
-			<list value-type="entity.Ram">
+			<list value-type="spel.entity.Ram">
 				<ref bean="ram1"/>
 				<ref bean="ram2"/>
 			</list>
@@ -46,21 +53,21 @@
 	</bean>
 	
 	<!-- Procesador -->
-	<bean id="procesador" class="entity.Procesador">
+	<bean id="procesador" class="spel.entity.Procesador">
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaProcesadores())}"></property>
 		<property name="precio" value="#{util.generateRandomNumber(200,500)}"></property>
 		<property name="hz" value="75"></property>
 	</bean>
 	
 	<!-- Tarjetas Graficas -->
-	<bean id="grafica1" class="entity.TarjetaGrafica">
+	<bean id="grafica1" class="spel.entity.TarjetaGrafica">
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaGraficas())}"></property>
 		<property name="ram" ref="ram4"></property>
 		<property name="modelo" value="GTX7000"></property>
 		<property name="precio" value="#{util.generateRandomNumber(700,1000)}"></property>
 	</bean>
 	
-	<bean id="grafica2" class="entity.TarjetaGrafica">
+	<bean id="grafica2" class="spel.entity.TarjetaGrafica">
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaGraficas())}"></property>
 		<property name="ram" ref="ram3"></property>
 		<property name="modelo" value="GTX1060"></property>
@@ -69,7 +76,7 @@
 	
 	<bean id="listGraficas" class="java.util.ArrayList">
 		<constructor-arg>
-			<list value-type="entity.TarjetaGrafica">
+			<list value-type="spel.entity.TarjetaGrafica">
 				<ref bean="grafica1"/>
 				<ref bean="grafica2"/>
 			</list>
@@ -77,14 +84,14 @@
 	</bean>
 	
 	<!-- Perifericos -->
-	<bean id="monitor" class="entity.Monitor">
+	<bean id="monitor" class="spel.entity.Monitor">
 		<property name="precio" value="#{util.generateRandomNumber(100,200)}"></property>
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaPerifericos())}"></property>
 		<property name="hz" value="166"></property>
 		<property name="tamaño" value="23"></property>
 	</bean>
 	
-	<bean id="raton" class="entity.Raton">
+	<bean id="raton" class="spel.entity.Raton">
 		<property name="precio" value="#{util.generateRandomNumber(50,200)}"></property>
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaPerifericos())}"></property>
 		<property name="peso" value="23"></property>
@@ -92,7 +99,7 @@
 		<property name="inalambrico" value="false"></property>
 	</bean>
 	
-	<bean id="teclado" class="entity.Teclado">
+	<bean id="teclado" class="spel.entity.Teclado">
 		<property name="precio" value="#{util.generateRandomNumber(50,200)}"></property>
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaPerifericos())}"></property>
 		<property name="tipo" value="Mecánico"></property>
@@ -100,7 +107,7 @@
 	
 	<bean id="listPerifericos" class="java.util.ArrayList">
 		<constructor-arg>
-			<list value-type="entity.Perifericos">
+			<list value-type="spel.entity.Perifericos">
 				<ref bean="monitor"/>
 				<ref bean="raton"/>
 				<ref bean="teclado"/>
@@ -108,7 +115,7 @@
 		</constructor-arg>
 	</bean>
 	
-	<bean id="placaBase" class="entity.PlacaBase">
+	<bean id="placaBase" class="spel.entity.PlacaBase">
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaPlacasBase())}"></property>
 		<property name="model" value="231"></property>
 		<property name="precio" value="#{util.generateRandomNumber(200,400)}"></property>
@@ -116,10 +123,10 @@
 	
 	<!-- Utils -->
 	<bean id="util" class="utils.Util"></bean>
-	<bean id="marcas" class="marcas.Marca"></bean>
+	<bean id="marcas" class="spel.marcas.Marca"></bean>
 	
 	<!-- OrdenadorService and OrdenadorRepository -->
-	<bean id="ordenadorService" class="service.impl.OrdenadorServiceImpl" autowire="byType"></bean>
-	<bean id="ordenadorRepo" class="repository.impl.OrdenadorRepositoryImpl"></bean>
+	<!-- <bean id="ordenadorService" class="spel.service.impl.OrdenadorServiceImpl" autowire="byType"></bean>
+	<bean id="ordenadorRepo" class="spel.repository.impl.OrdenadorRepositoryImpl"></bean>-->
 	
 </beans>

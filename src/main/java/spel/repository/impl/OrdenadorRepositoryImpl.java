@@ -21,7 +21,7 @@ public class OrdenadorRepositoryImpl implements OrdenadorRepository {
 		try(FileOutputStream fos = new FileOutputStream(new File(fichero));
 				ObjectOutputStream salida = new ObjectOutputStream(fos);) {
 
-			salida.writeObject(ordenador);
+			salida.writeObject(ordenador.toString());
 			
 			return true;
 			

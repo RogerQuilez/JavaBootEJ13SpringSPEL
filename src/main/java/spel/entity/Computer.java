@@ -119,5 +119,9 @@ public class Computer implements Serializable {
 		for (TarjetaGrafica targ: this.getListTarjetaGrafica()) targetsPrice += targ.getPrecio();
 		return targetsPrice;
 	}
+	
+	public void inicializar() {
+		this.precio = this.getTotalPriceComponents();
+	}
 		
 }

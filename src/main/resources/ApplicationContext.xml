@@ -10,11 +10,8 @@
 
 	<context:component-scan base-package="spel"></context:component-scan>
 
-	<bean id="computer" class="spel.entity.Computer" autowire="byType">
+	<bean id="computer" class="spel.entity.Computer" autowire="byType" init-method="inicializar">
 		<property name="marca" value="#{util.getRandomMarca(marcas.getMarcaOrdenadores())}"></property>
-		<property name="precio" value="#{ram1.precio + ram2.precio + procesador.precio +
-										grafica1.precio + grafica2.precio + monitor.precio +
-										teclado.precio + raton.precio + placaBase.precio}"></property>
 	</bean>
 
 	
